@@ -723,6 +723,25 @@ public class BubbleTextView extends TextView implements ItemInfoUpdateReceiver,
                 && shouldIgnoreTouchDown(event.getX(), event.getY())) {
             return false;
         }
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                animate().scaleX(0.92f).scaleY(0.92f)
+                        .setDuration(120)
+                        .setInterpolator(com.android.launcher3.util.LiquidSpringInterpolator.ICON_SQUISH_SPRING)
+                        .start();
+                try {
+                    performHapticFeedback(android.view.HapticFeedbackConstants.CLOCK_TICK);
+                } catch (Exception ignored) {}
+                break;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                animate().scaleX(1.0f).scaleY(1.0f)
+                        .setDuration(220)
+                        .setInterpolator(com.android.launcher3.util.LiquidSpringInterpolator.ICON_SQUISH_SPRING)
+                        .start();
+                break;
+        }
+
         if (isLongClickable()) {
             super.onTouchEvent(event);
             mLongPressHelper.onTouchEvent(event);

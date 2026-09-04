@@ -19,7 +19,10 @@
 
     <!-- A string pointer to the original app name string. This allows derived projects to
      easily override the app name without providing all translations -->
-    <string name="derived_app_name" translatable="false">@string/crdroid_app_name</string>
+    <string name="derived_app_name" translatable="false">@string/xephira_app_name</string>
+
+    <!-- Apple-style continuous superellipse squircle icon mask (x^4.2 + y^4.2 = 1) -->
+    <string name="config_icon_mask" translatable="false">"M 50,0 C 70,0 82,0 90,10 C 100,18 100,30 100,50 C 100,70 100,82 90,90 C 82,100 70,100 50,100 C 30,100 18,100 10,90 C 0,82 0,70 0,50 C 0,30 0,18 10,10 C 18,0 30,0 50,0 Z"</string>
 
     <!-- String representing the intent to delete a package.-->
     <string name="delete_package_intent" translatable="false">#Intent;action=android.intent.action.DELETE;launchFlags=0x10800000;end</string>
