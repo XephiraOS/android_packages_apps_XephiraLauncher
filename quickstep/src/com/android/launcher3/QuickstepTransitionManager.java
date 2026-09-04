@@ -207,27 +207,27 @@ public class QuickstepTransitionManager implements OnDeviceProfileChangeListener
      * Since our animations decelerate heavily when finishing, we want to start status bar
      * animations x ms before the ending.
      */
-    public static final int STATUS_BAR_TRANSITION_PRE_DELAY = 96;
+    public static final int STATUS_BAR_TRANSITION_PRE_DELAY = 60;
 
-    public static final long APP_LAUNCH_DURATION = 480;
+    public static final long APP_LAUNCH_DURATION = 320;
 
-    private static final long APP_LAUNCH_ALPHA_DURATION = 125;
-    private static final long APP_LAUNCH_ALPHA_START_DELAY = 25;
+    private static final long APP_LAUNCH_ALPHA_DURATION = 100;
+    private static final long APP_LAUNCH_ALPHA_START_DELAY = 15;
 
-    public static final int ANIMATION_NAV_FADE_IN_DURATION = 266;
-    public static final int ANIMATION_NAV_FADE_OUT_DURATION = 160;
+    public static final int ANIMATION_NAV_FADE_IN_DURATION = 200;
+    public static final int ANIMATION_NAV_FADE_OUT_DURATION = 120;
     public static final long ANIMATION_DELAY_NAV_FADE_IN =
             APP_LAUNCH_DURATION - ANIMATION_NAV_FADE_IN_DURATION;
     public static final Interpolator NAV_FADE_IN_INTERPOLATOR =
-            new PathInterpolator(0f, 0f, 0f, 1f);
+            com.android.launcher3.util.LiquidSpringInterpolator.APP_OPEN_SPRING;
     public static final Interpolator NAV_FADE_OUT_INTERPOLATOR =
-            new PathInterpolator(0.2f, 0f, 1f, 1f);
+            com.android.launcher3.util.LiquidSpringInterpolator.APP_CLOSE_SPRING;
 
-    public static final int RECENTS_LAUNCH_DURATION = 336;
-    private static final int LAUNCHER_RESUME_START_DELAY = 100;
-    private static final int CLOSING_TRANSITION_DURATION_MS = 280;
-    public static final int SPLIT_LAUNCH_DURATION = 370;
-    public static final int SPLIT_DIVIDER_ANIM_DURATION = 100;
+    public static final int RECENTS_LAUNCH_DURATION = 260;
+    private static final int LAUNCHER_RESUME_START_DELAY = 60;
+    private static final int CLOSING_TRANSITION_DURATION_MS = 240;
+    public static final int SPLIT_LAUNCH_DURATION = 300;
+    public static final int SPLIT_DIVIDER_ANIM_DURATION = 80;
 
     public static final int CONTENT_ALPHA_DURATION = 217;
     public static final int TRANSIENT_TASKBAR_TRANSITION_DURATION = 417;
@@ -664,7 +664,7 @@ public class QuickstepTransitionManager implements OnDeviceProfileChangeListener
             if (!skipAllAppsScale) {
                 SCALE_PROPERTY.set(appsView, scales[0]);
                 ObjectAnimator scale = ObjectAnimator.ofFloat(appsView, SCALE_PROPERTY, scales);
-                scale.setInterpolator(AGGRESSIVE_EASE);
+                scale.setInterpolator(com.android.launcher3.util.LiquidSpringInterpolator.APP_OPEN_SPRING);
                 scale.setDuration(CONTENT_SCALE_DURATION);
                 launcherAnimator.play(scale);
             }
@@ -852,7 +852,7 @@ public class QuickstepTransitionManager implements OnDeviceProfileChangeListener
         AnimatorSet animatorSet = new AnimatorSet();
         ValueAnimator appAnimator = ValueAnimator.ofFloat(0, 1);
         appAnimator.setDuration(APP_LAUNCH_DURATION);
-        appAnimator.setInterpolator(LINEAR);
+        appAnimator.setInterpolator(com.android.launcher3.util.LiquidSpringInterpolator.APP_OPEN_SPRING);
         appAnimator.addListener(floatingView);
         appAnimator.addListener(new AnimatorListenerAdapter() {
             @Override
