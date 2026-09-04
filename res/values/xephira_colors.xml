@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 XephiraOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Xephira Signature Accent Palette -->
+    <color name="xephira_accent_cyan">#00E5FF</color>
+    <color name="xephira_accent_indigo">#6366F1</color>
+    <color name="xephira_accent_violet">#8B5CF6</color>
+
+    <!-- Liquid Glass Translucency & Frosting Tokens -->
+    <color name="xephira_glass_dock_bg_light">#2BFFFFFF</color> <!-- 17% white frosted -->
+    <color name="xephira_glass_dock_bg_dark">#3D12172A</color>  <!-- 24% deep slate frosted -->
+    <color name="xephira_glass_dock_border_top">#66FFFFFF</color> <!-- 40% specular refraction rim -->
+    <color name="xephira_glass_dock_border_bottom">#1AFFFFFF</color> <!-- 10% soft refraction rim -->
+    <color name="xephira_glass_dock_shadow">#1E000000</color>
+
+    <!-- Liquid Spotlight Pill Colors -->
+    <color name="xephira_spotlight_pill_bg">#33FFFFFF</color>
+    <color name="xephira_spotlight_pill_border">#4DFFFFFF</color>
+    <color name="xephira_spotlight_text">#F8FAFC</color>
+
+    <!-- Resizable Enlarged Folder Liquid Backdrop -->
+    <color name="xephira_enlarged_folder_bg_light">#33FFFFFF</color>
+    <color name="xephira_enlarged_folder_bg_dark">#401E293B</color>
+    <color name="xephira_enlarged_folder_stroke">#4DFFFFFF</color>
+</resources>

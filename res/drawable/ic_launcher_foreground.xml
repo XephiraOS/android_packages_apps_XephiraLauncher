@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     Copyright (C) 2026 XephiraOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
@@ -10,23 +10,49 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
   <group>
-    <clip-path
-        android:pathData="M0,0h108v108h-108z"/>
+    <!-- Left Wing of Xephira 'X' -->
     <path
-        android:pathData="M108,0H0V108H108V0ZM42,30C39.791,30 38,31.791 38,34V74C38,76.209 39.791,78 42,78H66C68.209,78 70,76.209 70,74V34C70,31.791 68.209,30 66,30H42Z"
-        android:fillColor="#2A3232"
-        android:fillType="evenOdd"/>
-    <path
-        android:pathData="M28.54,28.54m-72,0a72,72 0,1 1,144 0a72,72 0,1 1,-144 0"
-        android:fillAlpha="0.6">
+        android:pathData="M34,28 L46,28 L74,80 L62,80 Z">
       <aapt:attr name="android:fillColor">
         <gradient
-            android:gradientRadius="72"
-            android:centerX="28.54"
-            android:centerY="28.54"
+            android:startX="34"
+            android:startY="28"
+            android:endX="74"
+            android:endY="80"
+            android:type="linear">
+          <item android:offset="0.0" android:color="#00E5FF"/> <!-- Electric Cyan -->
+          <item android:offset="1.0" android:color="#38BDF8"/> <!-- Sky Blue -->
+        </gradient>
+      </aapt:attr>
+    </path>
+    <!-- Right Wing of Xephira 'X' with Glass Overlay -->
+    <path
+        android:pathData="M74,28 L62,28 L34,80 L46,80 Z">
+      <aapt:attr name="android:fillColor">
+        <gradient
+            android:startX="74"
+            android:startY="28"
+            android:endX="34"
+            android:endY="80"
+            android:type="linear">
+          <item android:offset="0.0" android:color="#818CF8"/> <!-- Light Indigo -->
+          <item android:offset="1.0" android:color="#C084FC"/> <!-- Glass Violet -->
+        </gradient>
+      </aapt:attr>
+    </path>
+    <!-- Center Core Glow Point -->
+    <path
+        android:pathData="M54,54m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0"
+        android:fillAlpha="0.9">
+      <aapt:attr name="android:fillColor">
+        <gradient
+            android:gradientRadius="7"
+            android:centerX="54"
+            android:centerY="54"
             android:type="radial">
-          <item android:offset="0" android:color="#19FFFFFF"/>
-          <item android:offset="1" android:color="#00FFFFFF"/>
+          <item android:offset="0.0" android:color="#FFFFFF"/>
+          <item android:offset="0.6" android:color="#A5F3FC"/>
+          <item android:offset="1.0" android:color="#00E5FF"/>
         </gradient>
       </aapt:attr>
     </path>
