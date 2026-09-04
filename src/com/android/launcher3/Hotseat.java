@@ -392,6 +392,82 @@ public class Hotseat extends CellLayout implements Insettable {
         return super.mapOverItems(op);
     }
 
+    // ==================== Xephira Liquid Glass Floating Dock ====================
+    private final android.graphics.Paint mLiquidDockFillPaint = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG);
+    private final android.graphics.Paint mLiquidDockStrokePaint = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG);
+    private final android.graphics.Paint mLiquidDockShadowPaint = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG);
+    private final android.graphics.RectF mLiquidDockBounds = new android.graphics.RectF();
+    private boolean mLiquidDockInitialized = false;
+
+    private void initLiquidGlassDock() {
+        if (mLiquidDockInitialized) return;
+        Context ctx = getContext();
+        float density = ctx.getResources().getDisplayMetrics().density;
+
+        // Frosted glass fill
+        mLiquidDockFillPaint.setStyle(android.graphics.Paint.Style.FILL);
+        int fillColor = ctx.getColor(R.color.xephira_glass_dock_bg_light);
+        mLiquidDockFillPaint.setColor(fillColor);
+
+        // Specular refraction stroke (1.2dp)
+        mLiquidDockStrokePaint.setStyle(android.graphics.Paint.Style.STROKE);
+        mLiquidDockStrokePaint.setStrokeWidth(density * 1.2f);
+
+        // Ambient shadow
+        mLiquidDockShadowPaint.setStyle(android.graphics.Paint.Style.FILL);
+        mLiquidDockShadowPaint.setColor(ctx.getColor(R.color.xephira_glass_dock_shadow));
+        mLiquidDockShadowPaint.setMaskFilter(new android.graphics.BlurMaskFilter(density * 12f, android.graphics.BlurMaskFilter.Blur.NORMAL));
+
+        mLiquidDockInitialized = true;
+    }
+
+    @Override
+    protected void dispatchDraw(android.graphics.Canvas canvas) {
+        if (!mHasVerticalHotseat && getShortcutsAndWidgets() != null) {
+            initLiquidGlassDock();
+            View iconsContainer = getShortcutsAndWidgets();
+            if (iconsContainer.getWidth() > 0 && iconsContainer.getHeight() > 0) {
+                float density = getContext().getResources().getDisplayMetrics().density;
+                float horizontalInset = 16f * density;
+                float verticalPadding = 8f * density;
+
+                float left = iconsContainer.getLeft() + horizontalInset;
+                float right = iconsContainer.getRight() - horizontalInset;
+                float top = iconsContainer.getTop() - verticalPadding;
+                float bottom = iconsContainer.getBottom() + verticalPadding;
+
+                if (right > left && bottom > top) {
+                    mLiquidDockBounds.set(left, top, right, bottom);
+                    float cornerRadius = 32f * density;
+
+                    // Update specular gradient
+                    int borderTop = getContext().getColor(R.color.xephira_glass_dock_border_top);
+                    int borderBottom = getContext().getColor(R.color.xephira_glass_dock_border_bottom);
+                    mLiquidDockStrokePaint.setShader(new android.graphics.LinearGradient(
+                            0, top, 0, bottom,
+                            borderTop, borderBottom,
+                            android.graphics.Shader.TileMode.CLAMP
+                    ));
+
+                    // 1. Draw subtle ambient drop shadow
+                    canvas.drawRoundRect(mLiquidDockBounds, cornerRadius, cornerRadius, mLiquidDockShadowPaint);
+
+                    // 2. Draw frosted liquid glass fill
+                    canvas.drawRoundRect(mLiquidDockBounds, cornerRadius, cornerRadius, mLiquidDockFillPaint);
+
+                    // 3. Draw specular refraction rim
+                    float halfStroke = mLiquidDockStrokePaint.getStrokeWidth() / 2f;
+                    android.graphics.RectF rimBounds = new android.graphics.RectF(
+                            left + halfStroke, top + halfStroke,
+                            right - halfStroke, bottom - halfStroke
+                    );
+                    canvas.drawRoundRect(rimBounds, cornerRadius, cornerRadius, mLiquidDockStrokePaint);
+                }
+            }
+        }
+        super.dispatchDraw(canvas);
+    }
+
     /** Dumps the Hotseat internal state */
     public void dump(String prefix, PrintWriter writer) {
         writer.println(prefix + "Hotseat:");

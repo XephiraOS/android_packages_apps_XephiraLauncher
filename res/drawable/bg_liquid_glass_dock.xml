@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 XephiraOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!-- Liquid Glass Corner Curvature -->
+    <corners android:radius="34dp" />
+
+    <!-- Frosted Glass Translucent Fill -->
+    <solid android:color="@color/xephira_glass_dock_bg_light" />
+
+    <!-- Specular Light-Catching Glass Rim -->
+    <stroke
+        android:width="1.2dp"
+        android:color="@color/xephira_glass_dock_border_top" />
+
+    <padding
+        android:left="16dp"
+        android:top="10dp"
+        android:right="16dp"
+        android:bottom="10dp" />
+</shape>
