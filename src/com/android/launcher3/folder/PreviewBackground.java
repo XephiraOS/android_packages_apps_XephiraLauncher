@@ -60,7 +60,7 @@ import com.android.launcher3.views.ActivityContext;
 public class PreviewBackground extends DelegatedCellDrawing {
 
     private static final boolean DRAW_SHADOW = false;
-    private static final boolean DRAW_STROKE = false;
+    private static final boolean DRAW_STROKE = true;
 
     @VisibleForTesting protected static final int CONSUMPTION_ANIMATION_DURATION = 100;
 
@@ -169,7 +169,7 @@ public class PreviewBackground extends DelegatedCellDrawing {
         mInvalidateDelegate = invalidateDelegate;
 
         TypedArray ta = context.getTheme().obtainStyledAttributes(R.styleable.FolderIconPreview);
-        mStrokeColor = ta.getColor(R.styleable.FolderIconPreview_folderIconBorderColor, 0);
+        mStrokeColor = ta.getColor(R.styleable.FolderIconPreview_folderIconBorderColor, 0x4DFFFFFF);
         mBgColor = ta.getColor(R.styleable.FolderIconPreview_folderPreviewColor, 0);
         ta.recycle();
 
