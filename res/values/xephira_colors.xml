@@ -25,4 +25,10 @@
     <color name="xephira_enlarged_folder_bg_light">#33FFFFFF</color>
     <color name="xephira_enlarged_folder_bg_dark">#401E293B</color>
     <color name="xephira_enlarged_folder_stroke">#4DFFFFFF</color>
+
+    <!-- Xephira Crimson & Clock Tokens (OnePlus style) -->
+    <color name="xephira_accent_crimson">#E60026</color>
+    <color name="xephira_clock_white">#FFFFFF</color>
+    <color name="xephira_clock_glass_bg">#260F172A</color>
+    <color name="xephira_clock_glass_stroke">#33FFFFFF</color>
 </resources>
