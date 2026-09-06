@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 XephiraOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+    <!-- Obsidian Frosted Glass Backplate -->
+    <path
+        android:fillColor="#141824"
+        android:strokeColor="#2AE60026"
+        android:strokeWidth="1.5"
+        android:pathData="M50,4 C75.4,4 96,24.6 96,50 C96,75.4 75.4,96 50,96 C24.6,96 4,75.4 4,50 C4,24.6 24.6,4 50,4 Z" />
+
+    <!-- Subtle Specular Inner Rim -->
+    <path
+        android:strokeColor="#1FFFFFFF"
+        android:strokeWidth="1"
+        android:pathData="M50,7 C73.7,7 93,26.3 93,50 C93,73.7 73.7,93 50,93 C26.3,93 7,73.7 7,50 C7,26.3 26.3,7 50,7 Z" />
+
+    <!-- White Petal: top-left to bottom-right (-45 degrees) -->
+    <group
+        android:pivotX="50"
+        android:pivotY="50"
+        android:scaleX="0.75"
+        android:scaleY="0.75"
+        android:rotation="-45">
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M 50.0,42.8 C 69.88,42.80 86.00,46.02 86.00,50.00 C 86.00,53.98 69.88,57.20 50.00,57.20 C 30.12,57.20 14.00,53.98 14.00,50.00 C 14.00,46.02 30.12,42.80 50.00,42.80 Z" />
+    </group>
+
+    <!-- Crimson Red Petal: bottom-left to top-right (+45 degrees) -->
+    <group
+        android:pivotX="50"
+        android:pivotY="50"
+        android:scaleX="0.75"
+        android:scaleY="0.75"
+        android:rotation="45">
+        <path
+            android:fillColor="#E60026"
+            android:pathData="M 50.0,42.8 C 69.88,42.80 86.00,46.02 86.00,50.00 C 86.00,53.98 69.88,57.20 50.00,57.20 C 30.12,57.20 14.00,53.98 14.00,50.00 C 14.00,46.02 30.12,42.80 50.00,42.80 Z" />
+    </group>
+</vector>
