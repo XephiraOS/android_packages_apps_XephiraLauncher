@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.android.launcher3.BubbleTextView;
+import com.android.launcher3.Launcher;
 import com.android.launcher3.R;
 import com.android.launcher3.model.data.FolderInfo;
 import com.android.launcher3.model.data.ItemInfo;
@@ -64,10 +65,10 @@ public class EnlargedFolderIcon extends FolderIcon {
         }
 
         // Direct 1-tap app launch for visible items in enlarged mode
-        if (event.getAction() == MotionEvent.ACTION_UP && getFolderInfo() != null) {
+        if (event.getAction() == MotionEvent.ACTION_UP && mInfo != null) {
             float x = event.getX();
             float y = event.getY();
-            ArrayList<WorkspaceItemInfo> contents = getFolderInfo().contents;
+            ArrayList<WorkspaceItemInfo> contents = mInfo.getAppContents();
 
             if (contents != null && !contents.isEmpty()) {
                 // Calculate which of the 2x2 quadrant cells was tapped
@@ -79,12 +80,13 @@ public class EnlargedFolderIcon extends FolderIcon {
 
                 if (index < contents.size()) {
                     WorkspaceItemInfo tappedItem = contents.get(index);
-                    // Launch directly with ItemClickHandler
-                    ActivityContext actContext = ActivityContext.lookupContext(getContext());
-                    if (actContext != null) {
-                        ItemClickHandler.INSTANCE.onClick(this);
-                        return true;
-                    }
+                    try {
+                        Launcher launcher = Launcher.getLauncher(getContext());
+                        if (launcher != null) {
+                            ItemClickHandler.onClickAppShortcut(this, tappedItem, launcher);
+                            return true;
+                        }
+                    } catch (Exception ignored) {}
                 }
             }
         }
