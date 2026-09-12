@@ -84,6 +84,8 @@ internal constructor(
     }
 
     companion object {
+        @JvmField
+        val CONFIG_HINT_NO_WRAP = 1 shl 8
 
         /**
          * Return a new LauncherIcons instance from the global pool. Allows us to avoid allocating

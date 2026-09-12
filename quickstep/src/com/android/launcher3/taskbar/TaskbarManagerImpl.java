@@ -186,19 +186,19 @@ public class TaskbarManagerImpl implements DisplayDecorationListener {
             LineageSettings.System.FORCE_SHOW_NAVBAR);
 
     public static final Uri NAVIGATIONBAR_KEY_ORDER_URI = Settings.Secure.getUriFor(
-            Settings.Secure.NAVIGATIONBAR_KEY_ORDER);
+            "navigation_bar_key_order");
 
     public static final Uri NAV_BAR_LAYOUT_URI = Settings.Secure.getUriFor(
-            Settings.Secure.NAVBAR_LAYOUT_MODE);
+            "navigation_bar_layout_mode");
 
     public static final Uri GESTURE_NAVBAR_LENGTH_MODE_URI = Settings.System.getUriFor(
-            Settings.System.GESTURE_NAVBAR_LENGTH_MODE);
+            "gesture_navbar_length_mode");
 
     public static final Uri GESTURE_NAVBAR_HEIGHT_MODE_URI = Settings.System.getUriFor(
-            Settings.System.GESTURE_NAVBAR_HEIGHT_MODE);
+            "gesture_navbar_height_mode");
 
     public static final Uri NAVBAR_IME_SPACE_URI = Settings.Secure.getUriFor(
-            Settings.Secure.NAVBAR_IME_SPACE);
+            "navigation_bar_ime_space");
 
     public static final LooperExecutor TASKBAR_UI_THREAD =
             new LooperExecutor("TASKBAR_UI_THREAD", THREAD_PRIORITY_FOREGROUND);

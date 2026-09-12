@@ -95,7 +95,7 @@ public class OnePlusClockView extends LinearLayout {
                 getContext().startActivity(clockIntent);
             } catch (Exception e) {
                 Intent fallback = new Intent(Intent.ACTION_MAIN)
-                        .addCategory(Intent.CATEGORY_APP_CLOCK)
+                        .addCategory("android.intent.category.APP_CLOCK")
                         .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 try {
                     getContext().startActivity(fallback);

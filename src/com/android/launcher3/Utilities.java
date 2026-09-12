@@ -21,7 +21,7 @@ import static com.android.launcher3.Flags.injectableModelItems;
 import static com.android.launcher3.LauncherSettings.Favorites.CONTAINER_PRIVATESPACE;
 import static com.android.launcher3.folder.ClippedFolderIconLayoutRule.ICON_OVERLAP_FACTOR;
 import static com.android.launcher3.graphics.ShapeDelegate.DEFAULT_PATH_SIZE;
-import static com.android.launcher3.icons.BaseIconFactory.CONFIG_HINT_NO_WRAP;
+import static com.android.launcher3.icons.LauncherIcons.CONFIG_HINT_NO_WRAP;
 import static com.android.launcher3.icons.BitmapInfo.FLAG_THEMED;
 import static com.android.launcher3.icons.IconNormalizer.ICON_VISIBLE_AREA_FACTOR;
 import static com.android.launcher3.util.Executors.MAIN_EXECUTOR;

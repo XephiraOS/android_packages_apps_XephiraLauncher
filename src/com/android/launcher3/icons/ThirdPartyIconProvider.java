@@ -15,7 +15,7 @@ import com.android.launcher3.util.ComponentKey;
 
 import javax.inject.Inject;
 
-import static com.android.launcher3.icons.BaseIconFactory.CONFIG_HINT_NO_WRAP;
+import static com.android.launcher3.icons.LauncherIcons.CONFIG_HINT_NO_WRAP;
 
 @LauncherAppSingleton
 public class ThirdPartyIconProvider extends LauncherIconProvider {
